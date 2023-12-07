@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import NumericStepper from "../components/NumericStepper";
+import { apiConfig } from "../config/APIConfig";
 
 function MoodTracker() {
   const [movRecommendations, setMovRecommendations] = useState([]);
@@ -13,13 +14,13 @@ function MoodTracker() {
 
   const handleClick = () => {
     // Make the POST request using Axios
-    const storedToken = sessionStorage.getItem("token") || "";
+    const storedToken = sessionStorage.getItem("accessToken") || "";
     setIdle(false);
     setLoading(true);
     setMood("");
     axios
       .post(
-        `https://mood-rec-18221162.azurewebsites.net/moods/recommendations/?input=${entry}&max_amount=${maxAmount}`,
+        `${apiConfig.mood_rec}/moods/recommendations/?input=${entry}&max_amount=${maxAmount}`,
         {},
         {
           headers: {
@@ -51,7 +52,7 @@ function MoodTracker() {
           <label className="text-left">Enter your text</label>
           <textarea
             placeholder="Enter a text"
-            className="px-2 py-1 text-black flex w-full"
+            className="px-2 py-1 rounded-md text-black flex w-full"
             type="text"
             value={entry}
             onChange={(e) => setEntry(e.target.value)}
@@ -62,7 +63,7 @@ function MoodTracker() {
               <NumericStepper value={maxAmount} onChange={setMaxAmount} />
             </div>
             <button
-              className="border px-2 py-1 rounded-md hover:bg-white hover:text-black transition"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
               style={{ height: "min-content" }}
               onClick={handleClick}
             >
@@ -78,14 +79,16 @@ function MoodTracker() {
             ) : (
               <span>
                 Detected mood:{" "}
-                <span className="capitalize font-bold">{mood}</span>
+                <span className="capitalize font-bold text-blue-500">
+                  {mood}
+                </span>
               </span>
             )}
           </div>
         </div>
         <div className="flex flex-col gap-6">
           <div
-            className={`h-full transition-max-h duration-500 overflow-auto flex flex-col gap-4 ${
+            className={`h-full duration-500 overflow-auto flex flex-col gap-4 ${
               !loading ? "max-h-[400px]" : "max-h-[0px]"
             }`}
           >

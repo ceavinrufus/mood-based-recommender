@@ -38,3 +38,7 @@ code {
   width: 1em;
   text-align: left;
 }
+
+.transition-max-h {
+  transition-property: max-height;
+}
