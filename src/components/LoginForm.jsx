@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate hook
+import { useNavigate } from "react-router-dom";
 import { apiConfig } from "../config/APIConfig";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -29,11 +29,13 @@ function LoginForm() {
 
       // Store tokens in sessionStorage
       sessionStorage.setItem("accessToken", accessToken);
+      alert("Login success!");
 
-      // Redirect to "/" after successful login
       navigate("/");
+      window.location.reload();
     } catch (error) {
       // Handle login error
+      alert("Login failed!");
       console.error("Login error:", error);
     }
   };

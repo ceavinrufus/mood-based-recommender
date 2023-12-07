@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { apiConfig } from "../config/APIConfig";
 
 function RegisterForm() {
   const [username, setUsername] = useState("");
@@ -15,7 +16,7 @@ function RegisterForm() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("YOUR_REGISTER_ENDPOINT", {
+      const response = await axios.post(apiConfig.register, {
         username: username,
         email: email || null,
         full_name: fullName || null,
@@ -28,9 +29,10 @@ function RegisterForm() {
       });
 
       // Handle successful registration (redirect, display message, etc.)
-      console.log("Registration successful:", response.data);
+      alert("Registration success!");
     } catch (error) {
       // Handle registration error
+      alert("Registration failed!");
       console.error("Registration error:", error);
     }
   };
@@ -62,6 +64,18 @@ function RegisterForm() {
         />
       </div>
       <div className="flex flex-col">
+        <label htmlFor="password" className="mb-1">
+          Password:
+        </label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="border rounded-md px-2 py-1 text-black"
+        />
+      </div>
+      <div className="flex flex-col">
         <label htmlFor="fullName" className="mb-1">
           Full Name:
         </label>
@@ -73,43 +87,45 @@ function RegisterForm() {
           className="border rounded-md px-2 py-1 text-black"
         />
       </div>
-      <div className="flex flex-col">
-        <label htmlFor="gender" className="mb-1">
-          Gender:
-        </label>
-        <select
-          id="gender"
-          value={gender}
-          onChange={(e) => setGender(e.target.value)}
-          className="border rounded-md px-2 py-1 text-black"
-        >
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="weight" className="mb-1">
-          Weight (kg):
-        </label>
-        <input
-          type="number"
-          id="weight"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-          className="border rounded-md px-2 py-1 text-black"
-        />
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="height" className="mb-1">
-          Height (cm):
-        </label>
-        <input
-          type="number"
-          id="height"
-          value={height}
-          onChange={(e) => setHeight(e.target.value)}
-          className="border rounded-md px-2 py-1 text-black"
-        />
+      <div className="flex gap-4">
+        <div className="flex flex-col w-1/3">
+          <label htmlFor="gender" className="mb-1">
+            Gender:
+          </label>
+          <select
+            id="gender"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            className="border rounded-md px-2 py-1 text-black"
+          >
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div className="flex flex-col w-1/3">
+          <label htmlFor="weight" className="mb-1">
+            Weight (kg):
+          </label>
+          <input
+            type="number"
+            id="weight"
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
+            className="border rounded-md px-2 py-1 text-black"
+          />
+        </div>
+        <div className="flex flex-col w-1/3">
+          <label htmlFor="height" className="mb-1">
+            Height (cm):
+          </label>
+          <input
+            type="number"
+            id="height"
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+            className="border rounded-md px-2 py-1 text-black"
+          />
+        </div>
       </div>
       <div className="flex flex-col">
         <label htmlFor="birthdate" className="mb-1">
@@ -120,18 +136,6 @@ function RegisterForm() {
           id="birthdate"
           value={birthdate}
           onChange={(e) => setBirthdate(e.target.value)}
-          className="border rounded-md px-2 py-1 text-black"
-        />
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="password" className="mb-1">
-          Password:
-        </label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
           className="border rounded-md px-2 py-1 text-black"
         />
       </div>

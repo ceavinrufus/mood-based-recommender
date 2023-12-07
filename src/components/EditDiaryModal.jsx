@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { apiConfig } from "../config/APIConfig";
 import axios from "axios";
 
-function EditDiaryModal({ datetime, setIsOpen }) {
+function EditDiaryModal({ datetime, setIsOpen, onSubmit }) {
   const [diary, setDiary] = useState({}); // State to store new diary details
   const storedToken = sessionStorage.getItem("accessToken");
 
@@ -44,8 +44,10 @@ function EditDiaryModal({ datetime, setIsOpen }) {
       alert("Diary updated successfully");
       setDiary({});
       setIsOpen(false);
+      onSubmit();
     } catch (error) {
       console.error("Error updating diary:", error);
+      alert("You can't edit this diary!");
     }
   };
 
@@ -61,10 +63,10 @@ function EditDiaryModal({ datetime, setIsOpen }) {
           }}
         >
           <label htmlFor="notes">Notes</label>
-          <input
+          <textarea
             type="text"
             className="px-2 py-1 rounded-md w-full"
-            placeholder="What's in your thoughts?"
+            placeholder="What's in your mind?"
             value={diary?.notes || ""}
             onChange={(e) => {
               setDiary({ ...diary, notes: e.target.value });
@@ -74,7 +76,7 @@ function EditDiaryModal({ datetime, setIsOpen }) {
           <input
             type="text"
             className="px-2 py-1 rounded-md w-full"
-            placeholder="What's in your thoughts?"
+            placeholder="What's your mood?"
             value={diary?.mood || ""}
             onChange={(e) => {
               setDiary({ ...diary, mood: e.target.value.toLowerCase() });

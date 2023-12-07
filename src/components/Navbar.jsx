@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   useEffect(() => {
     const isAuthenticated = () => {
@@ -27,6 +29,7 @@ const Navbar = () => {
   const handleLogout = () => {
     sessionStorage.removeItem("accessToken");
     setIsLoggedIn(false);
+    navigate("/auth");
   };
 
   return (
@@ -35,13 +38,21 @@ const Navbar = () => {
         <a href="/" className="text-2xl">
           Mood<span className="font-bold">Diaries</span>
         </a>
-        <div className="flex gap-12 items-center">
-          <a
-            href="/recommender"
-            className="hover:text-gray-300 transition duration-300 ease-in-out"
-          >
-            Recommender
-          </a>
+        <div className="flex gap-8 items-center">
+          <div className="">
+            <a
+              href="/"
+              className="hover:bg-gray-800 px-4 py-2 rounded-md transition duration-300 ease-in-out"
+            >
+              Home
+            </a>
+            <a
+              href="/recommender"
+              className="hover:bg-gray-800 px-4 py-2 rounded-md transition duration-300 ease-in-out"
+            >
+              Recommender
+            </a>
+          </div>
           {isLoggedIn ? (
             <button
               onClick={handleLogout}
