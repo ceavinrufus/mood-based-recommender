@@ -84,7 +84,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="pt-40 pb-20 px-20 gap-20 flex bg-black w-screen min-h-screen">
+      <div className="pt-40 pb-20 px-20 gap-20 flex bg-black w-full min-h-screen">
         {!isLoading ? (
           <div className="flex gap-20 w-full">
             <div className="w-1/4 gap-10 flex flex-col">

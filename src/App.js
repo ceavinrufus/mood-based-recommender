@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="w-screen">
+    <div className="">
       <Navbar />
       <RoutesConfig />
       <Footer />
