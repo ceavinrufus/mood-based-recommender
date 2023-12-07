@@ -102,7 +102,7 @@ const HomePage = () => {
             <div className="flex flex-wrap gap-8 w-3/4 h-min">
               {diaries.map((diary) => (
                 <div
-                  className="p-4 h-80 w-80 rounded-xl bg-white flex flex-col justify-between"
+                  className="p-4 h-80 w-80 rounded-xl bg-gray-200 flex flex-col justify-between"
                   key={diary.datetime}
                 >
                   <div className="flex flex-col gap-2">

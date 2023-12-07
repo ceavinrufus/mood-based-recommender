@@ -43,8 +43,8 @@ function MoodTracker() {
   };
 
   return (
-    <div className="w-screen h-screen bg-black text-white flex flex-col justify-center items-center ">
-      <div className="flex flex-col p-10 rounded-xl gap-6 border w-[600px]">
+    <div className="w-screen h-screen bg-black flex flex-col justify-center items-center ">
+      <div className="flex flex-col p-10 rounded-xl gap-6 bg-gray-200 w-[600px]">
         <h1 className="text-4xl font-bold mb-4 text-center">
           Mood Based Recommender
         </h1>

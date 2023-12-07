@@ -36,7 +36,7 @@ const Navbar = () => {
     <nav className="bg-gray-900 text-white absolute w-full h-20 flex">
       <div className="container mx-auto py-4 flex justify-between items-center">
         <a href="/" className="text-2xl">
-          Mood<span className="font-bold">Diaries</span>
+          Moods<span className="font-bold">Diary</span>
         </a>
         <div className="flex gap-8 items-center">
           <div className="">
