@@ -92,7 +92,7 @@ function MoodTracker() {
               !loading ? "max-h-[400px]" : "max-h-[0px]"
             }`}
           >
-            {movRecommendations.length > 0 && (
+            {movRecommendations?.length > 0 && (
               <div className="w-full">
                 <h3 className="text-xl mb-2">Movie Recommendations:</h3>
                 {movRecommendations.map((recommendation, index) => (
@@ -100,7 +100,7 @@ function MoodTracker() {
                 ))}
               </div>
             )}
-            {bevRecommendations.length > 0 && (
+            {bevRecommendations?.length > 0 && (
               <div className="w-full">
                 <h3 className="text-xl mb-2">Beverage Recommendations:</h3>
                 {bevRecommendations.map((recommendation, index) => (

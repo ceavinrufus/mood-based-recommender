@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Routes, Navigate, Outlet } from "react-router-dom";
-import MoodTrackerPage from "../pages/MoodTrackerPage";
+import Recommender from "../pages/Recommender";
 import AuthPage from "../pages/AuthPage";
 import { jwtDecode } from "jwt-decode";
+import HomePage from "../pages/HomePage";
 
 const ProtectedRoute = () => {
   const isAuthenticated = () => {
@@ -28,7 +29,8 @@ const RoutesConfig = () => {
   return (
     <Routes>
       <Route element={<ProtectedRoute />}>
-        <Route path="/" element={<MoodTrackerPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/recommender" element={<Recommender />} />
       </Route>
       <Route path="/auth" element={<AuthPage />} />
     </Routes>
