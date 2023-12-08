@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="bg-gray-900 text-white flex h-40 items-center justify-between p-10">
       <div className="space-y-4">
         <h2 className="text-2xl px-4">
-          Moods<span className="font-bold">Diary</span>
+          Mood<span className="font-bold">tertainment</span>
         </h2>
         <div className="">
           <a
